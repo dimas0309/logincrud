@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Customer Form</title>
+	
+	<!-- bootstrap link -->
+	<link rel="stylesheet" 
+	      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	
+	<!-- CSS link -->
+	<link rel="stylesheet"
+		  th:href="@{/css/style.css}" />      
+	
+</head>
+
+<body>
+   <div class="container">
+      <div class="jumbotron">
+      
+         <h1>WEB SITE</h1>
+         <hr>
+         <h3>Customer Form</h3>
+            <a class="nav-link" th:href="@{/customers/showCustomers}">Back</a> 
+      </div>
+   </div>
+   
+   <div class="mx-auto container" style="width:800px">
+       <form th:action="@{/customers/saveCustomer}" th:object="${customer}"
+             method="post">
+             
+            <div class="row">
+               <div class="col">
+                  <input type="text" th:field="*{firstName}" 
+                         class="form-control" placeholder="First Name"
+                         required>
+                    <br>
+                    
+                  <input type="text" th:field="*{lastName}" 
+                         class="form-control" placeholder="Last Name"
+                         required>
+                    <br>       
+             
+                  <input type="text" th:field="*{company}" 
+                         class="form-control" placeholder="Company Name"
+                         required>
+                    <br>
+               </div>
+               <div class="col">
+                  <input type="hidden" th:field="*{id}" />
+                  
+                  <input type="text" th:field="*{idNumber}" 
+                         class="form-control" placeholder="ID Number"
+                         required>
+                    <br>       
+                    
+                  <input type="text" th:field="*{idCompany}" 
+                         class="form-control" placeholder="ID Company"
+                         required> 
+                    <br>
+                    
+                  <input type="text" th:field="*{phoneNumber}" 
+                         class="form-control" placeholder="Phone Number"
+                         required>
+                    <br>   
+                    
+                  <button type="submit" class="btn btn-success">Save</button>    
+               </div>
+               <div class="col">
+                  <input type="text" th:field="*{address}" 
+                         class="form-control" placeholder="Address"
+                         required> 
+                    <br>
+                    
+                 <input type="text" th:field="*{email}" 
+                        class="form-control" placeholder="Email"
+                        required> 
+                    <br> 
+               </div>
+            </div> 
+       </form>
+   </div>
+
+	 
+
+</body>
+
+</html>

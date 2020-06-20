@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Total Invoice</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+    <!-- bootstrap link -->
+	<link rel="stylesheet" 
+	      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	
+	<!-- jquery link -->      
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>      
+	
+</head>
+     <body>
+         <div class="container">
+            <div class="jumbotron">
+                <h1>WEB SITE</h1>
+                <br>
+                <h3>Total Invoice</h3>
+                <br>
+                <a></a> <a href="/invoiceLine/invoiceItem">Invoice Line</a>
+            </div>
+         </div>
+         <div class="container" style="width: 350px" th:with="number=${number}">
+            <form >
+                <label>Invoice Number:</label>
+                <p th:text="${#lists.size(invoices)}"></p>
+                <br>
+                <label>Total Invoice:</label>
+                <p th:each="invoice : ${invoices.?[ id == __${number}__]}">
+                  <span th:text="${invoice.totalPrice}"></span>
+                </p>
+                
+            </form>
+         </div>
+         <br><br>
+     <script type="text/javascript">
+
+             // index css style
+             $(".jumbotron").css("background","aqua");
+             $("h1").css("text-align","center");
+             $("h1").css("color","blue");
+             $("h3").css("text-align","center");
+             $("h3").css("color","blue");
+             $("form").css("text-align","center");
+             $("form").css("color","blue");
+             
+     </script>
+     </body>
+</html>

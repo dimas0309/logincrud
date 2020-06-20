@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Menu</title>
+	
+	<!-- bootstrap link -->
+	<link rel="stylesheet" 
+	      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	
+	<!-- reference CSS file -->
+	<link rel="stylesheet"
+		  th:href="@{/css/style.css}" />
+	
+</head>
+    <body>
+       <div class="container" >
+          <div class="jumbotron">
+          
+              <h1>WEB SITE</h1>
+              <hr>
+              <h3>MENU</h3>
+              <nav class="nav">
+                 <a class="nav-link" th:href="@{/logout}">Logout</a>
+                 <a class="nav-link" th:href="@{/providers/showProviders}">Providers</a>
+                 <a class="nav-link" th:href="@{/customers/showCustomers}">Customers</a>
+                 <a class="nav-link" th:href="@{/invoiceLine/invoiceItem}">Invoice</a>
+                 <a class="nav-link">Quotations</a>
+                 <a class="nav-link">POS</a>
+                 <a class="nav-link">Warehouse</a>
+                 <a class="nav-link">Inventory</a>
+              
+              
+              </nav>
+          </div>
+       
+       
+       
+       </div>
+   </body>
+
+</html>

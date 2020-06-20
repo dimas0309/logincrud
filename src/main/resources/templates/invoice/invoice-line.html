@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Invoice</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+    <!-- bootstrap link -->
+	<link rel="stylesheet" 
+	      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	
+	<!-- jquery link -->      
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>      
+	
+</head>
+     <body>
+         <div class="container">
+            <div class="jumbotron">
+                <h1>WEB SITE</h1>
+                <br>
+                <h3>Invoice</h3>
+                <br>
+                <a href="/main">Menu</a>
+            </div>
+         </div>
+         <div class="mx-auto container" style="width: 300px">
+             <form th:object="${invoiceLine}" th:action="@{/invoiceLine/saveInvoiceLine}" method="post">
+                 <input id="invoiceNumber" class="form-control" 
+                               th:field="*{invoiceNumber}" placeholder="ID Invoice">
+                 <br><br>              
+                 <div class="form-row">
+                     <div class="col-md-6 mb-6">
+                        <select id="item" class="form-control"
+                                th:field="*{description}">
+                               <option th:each="item : ${items}" 
+                                   th:value="${item.description}" 
+                                   th:text="${item.description}">
+                              </option>
+                        </select>
+                        <br><br>
+                        <input id="quantity" class="form-control" 
+                               th:field="*{quantity}" placeholder="Quantity">
+                     </div>
+                     <div class="col-md-6 mb-6">
+                        <select id="unitPrice" class="form-control"
+                                th:field="*{unitPrice}">
+                               <option th:each="item : ${items}" 
+                                   th:value="${item.unitPrice}" 
+                                   th:text="${item.unitPrice}">
+                               </option>
+                        </select>
+                        <br><br>
+                        <input id="netPrice" class="form-control" 
+                               th:field="*{netPrice}" placeholder="Net Price">
+                        <br><br>
+                        <button class="btn btn-success" type="submit">Invoice</button>
+                     </div>
+                 </div>
+             </form>
+         </div>
+     <script type="text/javascript">
+
+             // index css style
+             $(".jumbotron").css("background","aqua");
+             $("h1").css("text-align","center");
+             $("h1").css("color","blue");
+             $("h3").css("text-align","center");
+             $("h3").css("color","blue");
+
+             // get net price of any item
+             $("#netPrice").click(function(){
+                 
+            	 var uprice = $("#unitPrice").val();
+                 var quantity = $("#quantity").val();
+                 var nprice = parseInt(uprice)*parseInt(quantity);
+                 var netPrice = $("#netPrice").val(nprice.toString());
+             });
+
+     </script>
+     </body>
+</html>

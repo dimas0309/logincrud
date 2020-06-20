@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Provider Form</title>
+	
+	<!-- bootstrap link -->
+	<link rel="stylesheet" 
+	      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	
+	<!-- CSS link -->
+	<link rel="stylesheet"
+		  th:href="@{/css/style.css}" />      
+	
+</head>
+
+<body>
+   <div class="container">
+      <div class="jumbotron">
+      
+         <h1>WEB SITE</h1>
+         <hr>
+         <h3>Provider Form</h3>
+            <a class="nav-link" th:href="@{/providers/showProviders}">Back</a> 
+      </div>
+   </div>
+   
+   <div class="mx-auto container" style="width:300px">
+       <form th:action="@{/providers/save}" th:object="${provider}"
+             method="post">
+             
+             <input type="hidden" th:field="*{id}" />
+             
+             <input type="text" th:field="*{company}" 
+                    class="form-control" placeholder="Company Name"
+                    required>
+                    <br>
+                    
+             <input type="text" th:field="*{idCompany}" 
+                    class="form-control" placeholder="ID Company"
+                    required> 
+                    <br>
+                    
+             <input type="text" th:field="*{address}" 
+                    class="form-control" placeholder="Address"
+                    required> 
+                    <br>
+                    
+             <input type="text" th:field="*{phoneNumber}" 
+                    class="form-control" placeholder="Phone Number"
+                    required>
+                    <br> 
+                    
+            <input type="text" th:field="*{email}" 
+                    class="form-control" placeholder="Email"
+                    required> 
+                    <br> 
+                    
+            <button type="submit" class="btn btn-success">Save</button>                                
+            
+       </form>
+   </div>
+
+	 
+
+</body>
+
+</html>

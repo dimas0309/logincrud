@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Customers</title>
+   
+	<!-- CSS link -->
+	<link rel="stylesheet" th:href="@{/css/style.css}" /> 
+	
+    <!-- bootstrap link -->
+	<link rel="stylesheet" 
+	      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+</head>
+
+<body>
+   <div class="container">
+      <div class="jumbotron">
+      
+         <h1>WEB SITE</h1>
+         <hr>
+         <h3>Customer List</h3>
+         
+         <nav class="nav">
+            <a class="nav-link" th:href="@{/main}">Back</a>
+            <a class="nav-link" th:href="@{/customers/customerForm}">
+               Create Customer
+            </a>
+            <form class="form-inline" th:action="@{/customers/searchCustomer}">
+               <input class="form-control" type="search" name="searchName"
+                      placeholder="Type the provider">
+               <button class="btn btn-info" type="submit">Search</button>       
+            </form> 
+              
+            
+         </nav>
+      </div>
+   </div>
+   
+   <div class="container">
+       <table class="table table-bordered">
+          <thead class="thead-light">
+              <tr class="header">
+                
+                <th>Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Company</th>
+                <th>ID Number</th>
+                <th>ID Company</th>
+                <th>Address</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th></th>
+                <th></th>
+                
+            </tr>
+          </thead>
+          <tbody>
+              <tr th:each="customer, stats : ${customers}">
+                
+                <td th:text="${stats.count}"/>
+                <td th:text="${customer.firstName}"/>
+                <td th:text="${customer.lastName}"/>
+                <td th:text="${customer.company}"/>
+                <td th:text="${customer.idNumber}"/>
+                <td th:text="${customer.idCompany}"/>
+                <td th:text="${customer.address}"/>
+                <td th:text="${customer.phoneNumber}"/>
+                <td th:text="${customer.email}"/>
+                 
+                <!-- Add update link -->
+                <td>
+                   <a class="btn btn-info btn-sm" 
+                      th:href="@{/customers/updateCustomer(id=${customer.id})}">
+                      Update
+                 </a>
+                </td>
+                
+                <!-- Add delete link -->
+                <td>
+                   <a class="btn btn-danger btn-sm" 
+                      th:href="@{/customers/deleteCustomer(id=${customer.id})}"
+                      onclick="if(!(confirm('Are you sure you want to delete this customer?'))) return false">
+                      Delete
+                 </a>
+                </td>
+               
+            </tr>
+          </tbody>
+      </table>
+       
+      
+   </div>
+    
+   
+</body>
+
+
+</html>
